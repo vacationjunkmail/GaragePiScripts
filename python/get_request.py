@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
-
+#https://omaharentalads.com/explore/garage-clipart/
 import requests
-url = 'https://omaharentalads.com/images/garage-clipart-empty-garage.png'
-image_name = url.split('/')
-print(image_name[-1])
-r = requests.get(url = url)
+url = ['https://omaharentalads.com/images/garage-clipart-empty-garage.png']
+url.append('https://omaharentalads.com/images/garage-clipart-empty-garage-3.png')
 
-download_link = '/home/pi/Downloads/{}'.format(image_name[-1])
+for item in url:
+    image_name = item.split('/')
+    image_name = image_name[-1].replace("-","_")
+    r = requests.get(url = item)
 
-with open(download_link,'wb') as f:
-    f.write(r.content)
+    download_link = '/var/www/relay/static/images/{}'.format(image_name)
 
-print(r.status_code)
-print(r.headers['content-type'])
-print(r.encoding)
+    with open(download_link,'wb') as f:
+        f.write(r.content)
+
+#print(r.status_code)
+#print(r.headers['content-type'])
+#print(r.encoding)
