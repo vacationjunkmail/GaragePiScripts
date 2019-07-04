@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 sudo git status;
 sudo git add *;
-sudo git commit -m "adding changes";
+read -p "Add comments for git files " comments
+sudo git commit -m "$comments";
 sudo git push;
+echo "..............";
+echo "...........";
+echo "........";
+echo ".....";
 sudo git status;
