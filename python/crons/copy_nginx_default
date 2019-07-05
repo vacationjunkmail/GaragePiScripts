@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+file_to_copy='/etc/nginx/sites-available/default'
+location_to_place='/var/www'
+sudo rsync -hav -progress $file_to_copy $location_to_place;
+
